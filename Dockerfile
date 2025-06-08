@@ -25,4 +25,9 @@ RUN dotnet publish "server1.1.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# ✅ Копируем файл базы данных внутрь контейнера
+COPY users.db /app/users.db
+
+# Точка входа
 ENTRYPOINT ["dotnet", "server1.1.dll"]
