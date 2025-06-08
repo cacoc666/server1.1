@@ -99,24 +99,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     });
 }
 
-// 🔹 Автооткрытие Swagger UI
-Task.Run(() =>
-{
-    try
-    {
-        var url = "https://localhost:7180";
-        Process.Start(new ProcessStartInfo
-        {
-            FileName = url,
-            UseShellExecute = true
-        });
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Ошибка при запуске браузера: {ex.Message}");
-    }
-});
-
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
